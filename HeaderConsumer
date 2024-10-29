@@ -1,6 +1,7 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Xml.Serialization;
 
 //Bağlantı oluşturma
 ConnectionFactory factory = new();
@@ -26,6 +27,7 @@ channel.QueueBind(
     routingKey: string.Empty,
     new Dictionary<string, object>
     {
+        //[x-match]= all ya da any konfigrasyon yapabilirsin
         ["no"] = value
     }
 
